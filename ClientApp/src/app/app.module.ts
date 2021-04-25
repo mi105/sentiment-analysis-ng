@@ -5,18 +5,25 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
+import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
+import { HomeComponent } from './components/home/home.component';
+import { LexiconComponent } from './components/lexicon/lexicon.component';
+import { DeleteWordComponent } from './components/delete-word/delete-word.component';
+import { NewWordComponent } from './components/new-word/new-word.component';
+import { ShowWordComponent } from './components/show-word/show-word.component';
+import { UpdateWordComponent } from './components/update-word/update-word.component';
+import { LexiconService } from './services/lexicon.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CounterComponent,
-    FetchDataComponent
+    LexiconComponent,
+    DeleteWordComponent,
+    NewWordComponent,
+    ShowWordComponent,
+    UpdateWordComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -24,11 +31,15 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
+      { path: 'lexicon', component: LexiconComponent },
+      { path: 'new-word', component: NewWordComponent },
+      { path: 'show-word:/id', component: ShowWordComponent },
+      { path: 'update-word/:id', component: UpdateWordComponent },
+      { path: 'delete-word/:id', component: DeleteWordComponent },
+
     ])
   ],
-  providers: [],
+  providers: [LexiconService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
