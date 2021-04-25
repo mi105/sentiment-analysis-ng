@@ -1,1 +1,19 @@
-<p>lexicon works!</p>
+<h1> Lexicon </h1>
+<p *ngIf="!lexicon"><b>Loading...</b></p>
+<table class = "table table-striped" *ngIf="lexicon">
+<thead>
+    <tr>
+        <th>Text</th>
+        <th>Sentiment</th>
+    </tr>
+</thead>
+<tbody>
+    <tr *ngFor="let word of lexicon.words" >
+        <td>{{word.text}}</td>
+        <td>{{word.sentiment}}</td>
+        <td>
+            Actions
+        </td>
+    </tr>
+</tbody>
+</table>

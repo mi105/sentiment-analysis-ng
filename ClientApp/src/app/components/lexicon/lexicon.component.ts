@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LexiconService } from 'src/app/services/lexicon.service';
 
 @Component({
   selector: 'app-lexicon',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LexiconComponent implements OnInit {
 
-  constructor() { }
+  public lexicon : Lexicon = { words:[] };
+
+  constructor(private service: LexiconService ) { }
 
   ngOnInit() {
+    this.service.getAllWords().subscribe(
+      data => { 
+        this.lexicon.words = data; }
+    )
   }
 
 }

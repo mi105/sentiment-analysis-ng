@@ -1,0 +1,4 @@
+interface Lexicon
+{
+    words: Word[];
+}
