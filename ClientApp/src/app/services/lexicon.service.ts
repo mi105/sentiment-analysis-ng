@@ -12,5 +12,9 @@ export class LexiconService {
   getAllWords(){
     return this.http.get<Word[]>(this._baseUrl + "/GetLexicon");
   }
+
+  addWord(word:Word){
+    return this.http.post(this._baseUrl+"/AddWord", word);
+  }
   
 }

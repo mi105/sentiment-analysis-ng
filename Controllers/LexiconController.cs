@@ -19,7 +19,7 @@ namespace SentimentAnalysis.Controllers
         public IActionResult AddWord([FromBody] Word word)
         {
             _service.AddWord(word);
-            return Ok("Added");
+            return Ok();
         }
 
         //Read lexicon
