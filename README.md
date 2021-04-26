@@ -23,18 +23,6 @@ appropriate field or by uploading. The document is a .txt file.
 npm install
 ```
 
-* Build all packages
-
-```console
-npm run build
-```
-
-* Remove the built files in all packages:
-
-```console
-npm run clean
-```
-
 * Restore dotnet packages
 ```console
 dotnet restore
