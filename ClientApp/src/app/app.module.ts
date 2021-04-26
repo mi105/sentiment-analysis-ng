@@ -34,7 +34,7 @@ import { LexiconService } from './services/lexicon.service';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'lexicon', component: LexiconComponent },
       { path: 'new-word', component: NewWordComponent },
-      { path: 'show-word:/id', component: ShowWordComponent },
+      { path: 'show-word/:id', component: ShowWordComponent },
       { path: 'update-word/:id', component: UpdateWordComponent },
       { path: 'delete-word/:id', component: DeleteWordComponent },
 

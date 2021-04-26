@@ -1,1 +1,16 @@
-<p>delete-word works!</p>
+<div class="delete-word">
+  <div *ngIf="showError" class="alert alert-danger" role="alert">
+    Word was not deleted from your lexicon.
+  </div>
+  <div *ngIf="error" class="alert alert-danger" role="alert">
+    Error: {{error}}!
+  </div>
+  <div class="card" *ngIf="word">
+    <div class="card-body">
+      <h5 class="card-title">text : {{word.text}}</h5>
+      <h5 class="card-title">sentiment : {{word.sentiment}}</h5>
+      <a [routerLink]="['/lexicon']" class="card-link"> Back</a>
+      <button (click)="deleteBook(word.id)" class="btn btn-danger"> Approve</button>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { LexiconService } from '../../services/lexicon.service';
 
 @Component({
   selector: 'app-show-word',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShowWordComponent implements OnInit {
 
-  constructor() { }
+  word: Word;
+  showError: boolean;
+  error: string;
+
+  constructor(private service: LexiconService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.service.getWordById(this.route.snapshot.params.id).subscribe((data: Word) => {
+      this.word = data;
+    },
+      error => {
+        this.showError = true;
+        this.error = error.statusText;
+      }
+    )
   }
 
 }

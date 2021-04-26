@@ -1,19 +1,36 @@
 <h1> Lexicon </h1>
 <p *ngIf="!lexicon"><b>Loading...</b></p>
-<table class = "table table-striped" *ngIf="lexicon">
-<thead>
+<div *ngIf="showError" class="alert alert-danger" role="alert">
+  Error loading lexicon.
+</div>
+<div *ngIf="error" class="alert alert-danger" role="alert">
+  Error: {{error}}!
+</div>
+
+<table class="table table-striped" *ngIf="lexicon">
+  <thead>
     <tr>
-        <th>Text</th>
-        <th>Sentiment</th>
+      <th>Text</th>
+      <th>Sentiment</th>
+      <th>Action</th>
     </tr>
-</thead>
-<tbody>
-    <tr *ngFor="let word of lexicon.words" >
-        <td>{{word.text}}</td>
-        <td>{{word.sentiment}}</td>
-        <td>
-            Actions
-        </td>
+  </thead>
+  <tbody>
+    <tr *ngFor="let word of lexicon.words">
+      <td>{{word.text}}</td>
+      <td>{{word.sentiment}}</td>
+      <td>
+        <button type="button" class="btn btn-primary btn-sm" (click)="showWord(word.id)">
+          Show
+        </button>
+        <button type="button" class="btn btn-success btn-sm" (click)="updateWord(word.id)">
+          Update
+        </button>
+        <button type="button" class="btn btn-danger btn-sm" (click)="deleteWord(word.id)">
+          Delete
+        </button>
+
+      </td>
     </tr>
-</tbody>
+  </tbody>
 </table>

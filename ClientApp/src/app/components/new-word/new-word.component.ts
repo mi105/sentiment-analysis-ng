@@ -10,7 +10,10 @@ import { LexiconService } from 'src/app/services/lexicon.service';
 })
 export class NewWordComponent implements OnInit {
 
-  addWordForm:FormGroup;
+  addWordForm: FormGroup;
+  word: Word;
+  showError: boolean;
+  error: string;
 
   constructor(private service : LexiconService, private fb:FormBuilder, private router: Router ) { }
 
@@ -22,10 +25,20 @@ export class NewWordComponent implements OnInit {
     })
   }
 
-  onSubmit(){
-    console.log("submitted");
-    this.service.addWord(this.addWordForm.value)
-    .subscribe(data => {this.router.navigate(["/lexicon"])})
+  onSubmit() {
+    this.word = this.addWordForm.value;
+    if (this.addWordForm.valid)
+      this.service.addWord(this.word)
+        .subscribe(data => {
+          this.router.navigate(["/lexicon"])
+        },
+          error => {
+            this.showError = true;
+            this.error = error.statusText;
+          }
+        )
+    else
+      this.showError = true;
   }
 
 }

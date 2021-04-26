@@ -1,1 +1,16 @@
-<p>show-word works!</p>
+<div class="show-word">
+  <div *ngIf="showError" class="alert alert-danger" role="alert">
+    Word can not be loaded from your lexicon.
+  </div>
+  <div *ngIf="error" class="alert alert-danger" role="alert">
+    Error: {{error}}!
+  </div>
+  <div class="card" *ngIf="word">
+    <div class="card-body">
+      <h5 class="card-title">text : {{word.text}}</h5>
+      <h5 class="card-title">sentiment : {{word.sentiment}}</h5>
+      <a [routerLink]="['/lexicon']" class="card-link"> Back</a>
+      <a [routerLink]="['/update-word', word.id]" class="card-link"> Update</a>
+    </div>
+  </div>
+</div>
