@@ -26,7 +26,7 @@ namespace SentimentAnalysis.Controllers
                     _service.AddWord(word);
                     return Ok();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     //here we could use the logger to log the exception 
                     return this.BadRequest();
@@ -46,7 +46,7 @@ namespace SentimentAnalysis.Controllers
                 var lexicon = _service.GetLexicon();
                 return Ok(lexicon.words);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 //here we could use the logger to log the exception 
                 return this.BadRequest();
@@ -65,7 +65,7 @@ namespace SentimentAnalysis.Controllers
                     _service.UpdateWord(id, word);
                     return Ok(word);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     //here we could use the logger to log the exception 
                     return this.BadRequest();
@@ -85,13 +85,11 @@ namespace SentimentAnalysis.Controllers
                 _service.DeleteWord(id);
                 return Ok();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 //here we could use the logger to log the exception
                 return this.BadRequest();
             }
-            _service.DeleteWord(id);
-            return Ok();
         }
 
         [HttpGet("SingleWord/{id}")]
@@ -102,7 +100,7 @@ namespace SentimentAnalysis.Controllers
                 var word = _service.GetWordById(id);
                 return Ok(word);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 //here we could use the logger to log the exception
                 return this.BadRequest();

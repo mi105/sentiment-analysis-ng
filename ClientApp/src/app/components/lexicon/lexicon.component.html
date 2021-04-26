@@ -7,6 +7,20 @@
   Error: {{error}}!
 </div>
 
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" id="inlineCheckbox1" value="all" [ngModel]="filter" (change)="changeFilter($event)">
+  <label class="form-check-label" for="inlineCheckbox1">all</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" id="inlineCheckbox2" value="positive" [ngModel]="filter" (change)="changeFilter($event)">
+  <label class="form-check-label" for="inlineCheckbox2">positive</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" id="inlineCheckbox3" value="negative" [ngModel]="filter" (change)="changeFilter($event)">
+  <label class="form-check-label" for="inlineCheckbox3">negative</label>
+</div>
+
+
 <table class="table table-striped" *ngIf="lexicon">
   <thead>
     <tr>
@@ -16,7 +30,8 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let word of lexicon.words">
+    <tr *ngFor="let word of lexicon.filteredWords" [ngClass]= "{'row_green': word.sentiment>=0,
+                                                        'row_red': word.sentiment < 0}" ng>
       <td>{{word.text}}</td>
       <td>{{word.sentiment}}</td>
       <td>
@@ -34,3 +49,5 @@
     </tr>
   </tbody>
 </table>
+<button class="btn-md btn-dark" [routerLink]="['/new-word']">Add new word</button>
+

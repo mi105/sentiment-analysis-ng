@@ -9,9 +9,10 @@ import { LexiconService } from 'src/app/services/lexicon.service';
 })
 export class LexiconComponent implements OnInit {
 
-  lexicon : Lexicon = { words:[] };
+  lexicon : Lexicon = { words:[], filteredWords:[] };
   showError: boolean;
   error: string;
+  filter : string;
 
   constructor(private service: LexiconService, private router:Router) { }
 
@@ -19,6 +20,7 @@ export class LexiconComponent implements OnInit {
     this.service.getAllWords().subscribe(
       data => { 
         this.lexicon.words = data;
+        this.lexicon.filteredWords = data;
       },
       error => {
         this.showError = true;
@@ -38,5 +40,14 @@ export class LexiconComponent implements OnInit {
   deleteWord(id: number) {
     this.router.navigate(["/delete-word/" + id]);
   }
-
+  
+  changeFilter(e)
+  {
+    if(e.target.value == "all")
+      this.lexicon.filteredWords = this.lexicon.words;
+    else if(e.target.value == "positive")
+      this.lexicon.filteredWords = this.lexicon.words.filter(x=>x.sentiment>=0);
+    else
+      this.lexicon.filteredWords = this.lexicon.words.filter(x=>x.sentiment<0);
+  }
 }

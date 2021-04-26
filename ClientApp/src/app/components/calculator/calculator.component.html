@@ -1,0 +1,10 @@
+<div class="calculator">
+    <form [formGroup]="calculatorForm" (ngSubmit)="onSubmit()">
+        <label class="required" for="text">Text</label>
+        <textarea type="text" class="form-control" id="text" formControlName="text" placeholder="Input text" > </textarea>
+        <button class="btn btn-success" type="submit" [disabled]="calculatorForm.pristine || calculatorForm.invalid">Calculate</button>
+    </form>
+    <div *ngIf = "score">
+        Sentiment score: {{score.value}} 
+    </div>
+</div>
