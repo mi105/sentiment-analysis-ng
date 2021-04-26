@@ -34,14 +34,14 @@ import { CalculatorComponent } from './components/calculator/calculator.componen
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'lexicon', component: LexiconComponent },
-      { path: 'new-word', component: NewWordComponent },
-      { path: 'show-word/:id', component: ShowWordComponent },
-      { path: 'update-word/:id', component: UpdateWordComponent },
-      { path: 'delete-word/:id', component: DeleteWordComponent },
-      { path: 'calculator', component: CalculatorComponent }
-    ])
+    { path: '', component: HomeComponent, pathMatch: 'full' },
+    { path: 'lexicon', component: LexiconComponent },
+    { path: 'new-word', component: NewWordComponent },
+    { path: 'show-word/:id', component: ShowWordComponent },
+    { path: 'update-word/:id', component: UpdateWordComponent },
+    { path: 'delete-word/:id', component: DeleteWordComponent },
+    { path: 'calculator', component: CalculatorComponent }
+], { relativeLinkResolution: 'legacy' })
   ],
   providers: [LexiconService],
   bootstrap: [AppComponent]
