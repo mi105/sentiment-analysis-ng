@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LexiconService } from 'src/app/services/lexicon.service';
+import { Lexicon } from '../../interfaces/lexicon';
 
 @Component({
   selector: 'app-lexicon',
