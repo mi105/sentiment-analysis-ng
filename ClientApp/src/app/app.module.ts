@@ -14,8 +14,7 @@ import { ShowWordComponent } from './components/show-word/show-word.component';
 import { UpdateWordComponent } from './components/update-word/update-word.component';
 import { LexiconService } from './services/lexicon.service';
 import { CalculatorComponent } from './components/calculator/calculator.component';
-import { AuthButtonComponent } from './components/auth-button/auth-button.component';
-import { AuthModule, AuthService } from '@auth0/auth0-angular';
+import { AuthModule } from '@auth0/auth0-angular';
 
 @NgModule({
   declarations: [
@@ -28,7 +27,6 @@ import { AuthModule, AuthService } from '@auth0/auth0-angular';
     ShowWordComponent,
     UpdateWordComponent,
     CalculatorComponent,
-    AuthButtonComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -50,7 +48,7 @@ import { AuthModule, AuthService } from '@auth0/auth0-angular';
     { path: 'calculator', component: CalculatorComponent }
 ], { relativeLinkResolution: 'legacy' })
   ],
-  providers: [LexiconService, AuthService],
+  providers: [LexiconService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

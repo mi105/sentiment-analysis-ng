@@ -20,25 +20,25 @@
         [ngClass]="{ show: isExpanded }"
       >
         <ul  class="navbar-nav flex-grow">
-          <li *ngIf="auth.loggedIn"
+          <li *ngIf="(auth.isAuthenticated$ | async) === true" 
             class="nav-item"
             [routerLinkActive]="['link-active']"
             [routerLinkActiveOptions]="{ exact: true }"
           >
            <a class="nav-link text-dark" [routerLink]="['/calculator']">Calculator</a>
           </li>
-          <li *ngIf="auth.loggedIn" class="nav-item" [routerLinkActive]="['link-active']">
+          <li *ngIf="(auth.isAuthenticated$ | async) === true" class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/lexicon']"
               >Lexicon</a
             >
           </li>
-          <li *ngIf="!auth.loggedIn" class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" (click) ="auth.login()"
+          <li *ngIf="(auth.isAuthenticated$ | async) === false" class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" (click) ="auth.loginWithRedirect()"
               >Log In</a
             >
           </li>
-          <li *ngIf="auth.loggedIn" class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" (click) ="auth.logout()"
+          <li *ngIf="(auth.isAuthenticated$ | async) === true" class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" (click) ="logout()"
               >Log Out</a
             >
           </li>
