@@ -14,6 +14,8 @@ import { ShowWordComponent } from './components/show-word/show-word.component';
 import { UpdateWordComponent } from './components/update-word/update-word.component';
 import { LexiconService } from './services/lexicon.service';
 import { CalculatorComponent } from './components/calculator/calculator.component';
+import { AuthButtonComponent } from './components/auth-button/auth-button.component';
+import { AuthModule, AuthService } from '@auth0/auth0-angular';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { CalculatorComponent } from './components/calculator/calculator.componen
     NewWordComponent,
     ShowWordComponent,
     UpdateWordComponent,
-    CalculatorComponent
+    CalculatorComponent,
+    AuthButtonComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -33,6 +36,10 @@ import { CalculatorComponent } from './components/calculator/calculator.componen
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    AuthModule.forRoot({
+      domain: 'dev-30bhys60.eu.auth0.com',
+      clientId: '5cysUvYspnvkxWaBW3XcIKrjeTEteimj'
+    }),
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'lexicon', component: LexiconComponent },
@@ -43,7 +50,7 @@ import { CalculatorComponent } from './components/calculator/calculator.componen
       { path: 'calculator', component: CalculatorComponent }
     ])
   ],
-  providers: [LexiconService],
+  providers: [LexiconService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
