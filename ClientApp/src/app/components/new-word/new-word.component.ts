@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LexiconService } from 'src/app/services/lexicon.service';
+import {Word} from '../../interfaces/word';
 
 @Component({
   selector: 'app-new-word',

@@ -41,14 +41,14 @@ import { AuthModule, AuthService } from '@auth0/auth0-angular';
       clientId: '5cysUvYspnvkxWaBW3XcIKrjeTEteimj'
     }),
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'lexicon', component: LexiconComponent },
-      { path: 'new-word', component: NewWordComponent },
-      { path: 'show-word/:id', component: ShowWordComponent },
-      { path: 'update-word/:id', component: UpdateWordComponent },
-      { path: 'delete-word/:id', component: DeleteWordComponent },
-      { path: 'calculator', component: CalculatorComponent }
-    ])
+    { path: '', component: HomeComponent, pathMatch: 'full' },
+    { path: 'lexicon', component: LexiconComponent },
+    { path: 'new-word', component: NewWordComponent },
+    { path: 'show-word/:id', component: ShowWordComponent },
+    { path: 'update-word/:id', component: UpdateWordComponent },
+    { path: 'delete-word/:id', component: DeleteWordComponent },
+    { path: 'calculator', component: CalculatorComponent }
+], { relativeLinkResolution: 'legacy' })
   ],
   providers: [LexiconService, AuthService],
   bootstrap: [AppComponent]

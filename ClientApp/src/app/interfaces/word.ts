@@ -4,3 +4,4 @@ interface Word
     text: string;
     sentiment: number; 
 }
+export {Word}

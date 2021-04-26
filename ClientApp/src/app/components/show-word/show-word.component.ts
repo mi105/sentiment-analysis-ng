@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { LexiconService } from '../../services/lexicon.service';
+import {Word} from '../../interfaces/word';
 
 @Component({
   selector: 'app-show-word',
