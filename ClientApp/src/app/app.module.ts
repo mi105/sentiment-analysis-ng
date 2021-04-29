@@ -15,6 +15,7 @@ import { UpdateWordComponent } from './components/update-word/update-word.compon
 import { LexiconService } from './services/lexicon.service';
 import { CalculatorComponent } from './components/calculator/calculator.component';
 import { AuthModule } from '@auth0/auth0-angular';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -40,12 +41,12 @@ import { AuthModule } from '@auth0/auth0-angular';
     }),
     RouterModule.forRoot([
     { path: '', component: HomeComponent, pathMatch: 'full' },
-    { path: 'lexicon', component: LexiconComponent },
-    { path: 'new-word', component: NewWordComponent },
-    { path: 'show-word/:id', component: ShowWordComponent },
-    { path: 'update-word/:id', component: UpdateWordComponent },
-    { path: 'delete-word/:id', component: DeleteWordComponent },
-    { path: 'calculator', component: CalculatorComponent }
+    { path: 'lexicon', component: LexiconComponent, canActivate: [AuthGuard] },
+    { path: 'new-word', component: NewWordComponent, canActivate: [AuthGuard] },
+    { path: 'show-word/:id', component: ShowWordComponent, canActivate: [AuthGuard] },
+    { path: 'update-word/:id', component: UpdateWordComponent, canActivate: [AuthGuard] },
+    { path: 'delete-word/:id', component: DeleteWordComponent, canActivate: [AuthGuard] },
+    { path: 'calculator', component: CalculatorComponent, canActivate: [AuthGuard] }
 ], { relativeLinkResolution: 'legacy' })
   ],
   providers: [LexiconService],

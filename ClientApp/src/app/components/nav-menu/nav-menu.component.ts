@@ -21,8 +21,6 @@ export class NavMenuComponent {
   }
 
   logout(){
-    alert("url:/"+document.location.origin);
     this.auth.logout({ returnTo: document.location.origin });
-    alert("logOut");
   }
 }
